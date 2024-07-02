@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  
+  <title>Frontend Mentor | Mortgage repayment calculator</title>
+
+</head>
+<body>
+  <main>
+    <div class="calculator-container">
+      <h1>Mortgage Calculator</h1>
+      <button id="clear">Clear All</button>
+  
+      <input type="number" id="mortgage-amount" name="mortgage-amount"></input>
+      <label for="mortgage-amount">Mortgage Amount</label>
+
+      <input type="number" id="mortgage-term" name="mortgage-term"></input>
+      <label for="mortgage-term">Mortgage Term</label>
+
+      <input type="number" id="interest-rate" name="interest-rate"></input>
+      <label for="interest-rate">Interest Rate</label>
+
+      <label for="mortgage-type">Mortgage Type</label>
+
+      <input type="radio" id="repayment" name="mortgage-type">Repayment</input>
+      <input type="radio" id="interest-only" name="mortgage-type">Interest Only</input>
+
+  
+      <button type="submit" class="submit">Calculate Repayments</input>
+    </div>
+
+    <!-- Empty results start -->
+
+    <div class="default-footer">
+      <h2>Results shown here</h2>
+ 
+      <p class="default-footer-text">
+        Complete the form and click “calculate repayments” to see what 
+        your monthly repayments would be.
+      </p>
+    </div>
+
+    <!-- Empty results end -->
+
+    <!-- Completed results start -->
+
+    <div class="complete-footer">
+      <h3>Your results</h3>
+ 
+      <p class="complete-footer-text">
+        Your results are shown below based on the information you provided. 
+        To adjust the results, edit the form and click “calculate repayments” again.
+      </p>
+  
+     <p class="monthly-payments">Your monthly repayments</p>
+  
+      <p class="term-payments">Total you'll repay over the term</p>
+    </div>
+
+  </main>
+
+  <!-- Completed results end -->
+  
+  <!-- <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>. 
+    Coded by <a href="#">Your Name Here</a>.
+  </div>-->
+</body>
+</html>
