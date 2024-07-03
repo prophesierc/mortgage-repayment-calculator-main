@@ -24,7 +24,47 @@
     --fw-500: 500;
     --fw-700: 700;
 }
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+main{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.calculator-container, .default-footer{
+    width: 90%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: var(--ff-Plus-Jakarata-Sans);
+}
+h1{
+    margin-bottom: -.5em;   
+}
+h2{
+    margin-bottom: 1em;
+}
+h1, h2{
+    font-size: 22px;
+    font-weight: var(--fw-700);
+    padding-top: 1em;
+}
+label, #clear{
+    color: var(--clr-Slate-700);
+    font-size: 14px;
+    font-weight: var(--fw-500);
+    margin-bottom: .5em;
+    margin-top: 1em;
+}
 
+
+.complete-footer{
+    display: none;
+}
 
 
 
