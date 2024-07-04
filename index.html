@@ -23,19 +23,21 @@
       <div class="currency-container">
         <i id="currency">£</i>
         <input type="number" id="mortgage-amount" name="mortgage-amount" min="0"></input>
+        <p class="errorText">This field is required</p>
       </div>
-
       
       <label for="mortgage-term">Mortgage Term</label>
       <div class="years-container">
         <input type="number" id="mortgage-term" name="mortgage-term" min="0"></input>
         <i id="years">years</i>
+        <p class="errorText">This field is required</p>
       </div>
 
       <label for="interest-rate">Interest Rate</label>
       <div class="percent-container">
         <input type="number" id="interest-rate" name="interest-rate" min="0"></input>
         <i id="percent">%</i>
+        <p class="errorText">This field is required</p>
       </div>
 
       <h2>Mortgage Type</h2>
@@ -49,9 +51,10 @@
           <input type="radio" id="interest-only" name="mortgage-type"></input>
           <label for="interest-only">Interest Only</label>
         </span>
+        <p class="errorText">This field is required</p>
       </div>
       
-      <button type="submit" class="submit">Calculate Repayments</button>
+      <button type="button" class="submit">Calculate Repayments</button>
 
     </form>
       <!-- Empty results start -->

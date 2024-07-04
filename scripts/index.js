@@ -10,6 +10,7 @@ class Calculator
     {
         this.clear();
         this.radioSpanSelector();
+        this.errorValidation();
     }
 
     clear()
@@ -39,6 +40,23 @@ class Calculator
                 radioInput[index].checked = true;
             }
         })   
+    }
+
+    errorValidation()
+    {
+        const submitButton = document.querySelector('.submit');
+        const allInputs = document.querySelectorAll('input');
+        
+        submitButton.onclick = () =>
+        {            
+            Array.from(allInputs).forEach((x) => 
+            {
+                if (x.checked === false || x.value === null)
+                {
+                    console.log(x.value)
+                };
+            })                               
+        }
     }
 
 }

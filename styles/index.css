@@ -58,6 +58,14 @@ h1, h3{
     cursor: pointer;
     width: 16%;
 }
+.errorStatus{
+    background: linear-gradient(to left, white 88%, var(--clr-Slate-100) 12%) right;
+}
+.errorText{
+    display: none;
+    color: var(--clr-red);
+    margin-top: .5em;
+}
 label, #clear, h2{
     color: var(--clr-Slate-700);
     font-size: 14px;
