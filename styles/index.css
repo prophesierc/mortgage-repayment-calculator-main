@@ -73,12 +73,14 @@ label, #clear, h2{
     margin-bottom: .5em;
     margin-top: 1em;
 }
-input[type='number']{
+input[type='number'], input[type='text']{
     border: 1px solid var(--clr-Slate-500);
     border-radius: 4px;
-    min-height: 3em;
+    min-height: 2.5em;
     width: 100%;
     padding-left: 5%;
+    font-size: var(--ff-Plus-Jakarata-Sans);
+    font-weight: var(--fw-700);
 }
 i{
     font-weight: var(--fw-700);
