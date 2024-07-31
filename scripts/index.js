@@ -12,6 +12,7 @@ class Calculator
         this.radioSpanSelector();
         this.errorValidation();
         this.toLocalStringInputFormatter();
+        this.submit()
     }
 
     clear()
@@ -40,6 +41,20 @@ class Calculator
         })   
     }
 
+    submit() // wip
+    {
+        const footerContainer = document.querySelector('.footer-container')
+        const defaultFooter = '.default-footer'
+        const completeFooter = '.complete-footer'
+
+        const submitButton = document.querySelector('.submit');
+
+        submitButton.onclick = () =>
+        {
+            footerContainer.classList.remove('default-footer')
+        }
+    }
+
     errorValidation() // wip
     {
         const submitButton = document.querySelector('.submit');
@@ -47,32 +62,29 @@ class Calculator
         
         submitButton.onclick = () =>
         {            
-            Array.from(allInputs).forEach((x) => 
-            {
-                if (x.checked === false || x.value === null)
-                {
-                    console.log(x.value)
-                };
-            })                               
+            // Array.from(allInputs).forEach((x) => 
+            // {
+            //     if (x.checked === false || x.value === null)
+            //     {
+            //         console.log(x.value)
+            //     };
+            // }) 
         }
     }
 
     toLocalStringInputFormatter() 
     {
-        const inputs = document.querySelectorAll('input[type="text"], input[type="number"]');
+        const input = document.querySelector('input[type="text"]');
     
-        inputs.forEach((input) => 
+        input.oninput = () => 
         {
-            input.oninput = () => 
-            {
-                const numericValue = input.value.replace(/[^\d]/g, '');
+            const numericValue = input.value.replace(/[^\d]/g, '');
 
-                numericValue !== '' 
-                ? input.value = parseInt(numericValue, 10).toLocaleString() 
-                : input.value = '';
-            }
-        })
+            numericValue !== '' 
+            ? input.value = parseInt(numericValue, 10).toLocaleString() 
+            : input.value = '';
+        }
     }    
-    
+
 }
 const calculator = new Calculator();
