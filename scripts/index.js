@@ -57,22 +57,22 @@ class Calculator
         }
     }
 
-    toLocalStringInputFormatter() //wip
+    toLocalStringInputFormatter() 
     {
-        const input = document.querySelectorAll('input') // add all htmlcollections to function
-        input.onblur = () =>
+        const inputs = document.querySelectorAll('input[type="text"], input[type="number"]');
+    
+        inputs.forEach((input) => 
         {
-            const numericValue = input.value.replace(/[^\d]/g, '');
-            if (numericValue  !== '')
+            input.oninput = () => 
             {
-                input.value = parseInt(numericValue, 10).toLocaleString();
-            }
-            else
-            {
-                input.value = ''
-            }
-        }
-    }
+                const numericValue = input.value.replace(/[^\d]/g, '');
 
+                numericValue !== '' 
+                ? input.value = parseInt(numericValue, 10).toLocaleString() 
+                : input.value = '';
+            }
+        })
+    }    
+    
 }
 const calculator = new Calculator();
