@@ -11,6 +11,7 @@
     --clr-Slate-500: hsl(200, 26%, 54%);
     --clr-Slate-700: hsl(200, 24%, 40%);
     --clr-Slate-900: hsl(202, 55%, 16%);
+    --clr-footer-container: hsl(204, 57%, 13%);
     /* ## Typography */
     /* ### Body Copy */
     --fs-paragraph: 16px;
@@ -28,6 +29,7 @@
 
 html, body {
     height: 100%;
+    margin: 0;
 }
 
 body {
@@ -90,11 +92,12 @@ label, #clear, h2 {
 input[type='number'], input[type='text'] {
     border: 1px solid var(--clr-Slate-500);
     border-radius: 4px;
-    min-height: 2.5em;
+    min-height: 3em;
     width: 100%;
     padding-left: 5%;
-    font-size: var(--ff-Plus-Jakarata-Sans);
+    font-family: var(--ff-Plus-Jakarata-Sans);
     font-weight: var(--fw-700);
+    color: var(--clr-Slate-900);
 }
 
 i {
@@ -174,24 +177,30 @@ input[type='radio'] {
 
 .footer-container {
     width: 100%;
+    height: 23em;
     background-color: var(--clr-Slate-900);
+    position: relative; 
+    overflow: hidden;
+}
+
+.default-footer, .complete-footer {
+    width: 100%;
     display: flex;
-    text-align: center;
-    padding: 20px 0 0 5%;
-    margin-top: auto; 
+    flex-direction: column;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    position: absolute;
 }
 
 .default-footer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
     color: var(--clr-Slate-500);
-    text-align: center;
-    width: 100%;
-    height: 100%;
     background-size: cover;
-    display: none;  /* hidden */
+    z-index: 1;
+    align-items: center;
+}
+
+.default-footer.hide {
+    opacity: 0;
+    transform: translateY(-100%);
 }
 
 .default-footer img {
@@ -199,36 +208,61 @@ input[type='radio'] {
     margin-top: 1.5em;
 }
 
-h3{
+h3 {
     color: var(--clr-white);
+    margin-bottom: 1em;
 }
+
 .default-footer-text {
-    font-size: var(--fs-paragraph);
+    font-weight: var(--fw-500);
     color: var(--clr-Slate-500);
     margin-bottom: 1.5em;
+    text-align: center;
 }
 
 .complete-footer {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 100%;
-    text-align: left;
+    padding: 2em 2em 7em 1.5em;
+    opacity: 0;
+    transform: translateY(100%);
+    z-index: 2; 
 }
 
-h4{
+.complete-footer.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+h4 {
     margin: -1em 0 1em 0;
     color: var(--clr-white);
     font-size: 22px;
     font-weight: var(--fw-500);
 }
 
+
 .complete-footer-text {
-    font-size: var(--fs-paragraph);
+    font-size: 14px;
+    font-weight: var(--fw-500);
     color: var(--clr-Slate-500);
     margin-bottom: 1.5em;
 }
 
+.complete-repayement-container{
+    height: 5em;
+    background-color: var(--clr-footer-container);
+}
+
+.monthly-payments, .term-payments{
+    background-color: red;
+}
+.js-repayement{
+    background-color: green;
+    color: var(--clr-lime);
+}
+.js-repayement-total{
+    background-color: blue;
+    color: var(--clr-white);
+}
 
 .attribution {
     font-size: 11px;

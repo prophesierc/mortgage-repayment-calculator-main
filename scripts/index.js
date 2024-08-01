@@ -12,7 +12,7 @@ class Calculator
         this.radioSpanSelector();
         this.errorValidation();
         this.toLocalStringInputFormatter();
-        this.submit()
+        this.completeFooterAnimationChange()
     }
 
     clear()
@@ -41,17 +41,12 @@ class Calculator
         })   
     }
 
-    submit() // wip
-    {
-        const footerContainer = document.querySelector('.footer-container')
-        const defaultFooter = '.default-footer'
-        const completeFooter = '.complete-footer'
-
-        const submitButton = document.querySelector('.submit');
-
-        submitButton.onclick = () =>
+    completeFooterAnimationChange() 
+    {    
+        document.querySelector('.submit').onclick = () => 
         {
-            footerContainer.classList.remove('default-footer')
+            document.querySelector('.default-footer').classList.add('hide');
+            document.querySelector('.complete-footer').classList.add('show');
         }
     }
 
