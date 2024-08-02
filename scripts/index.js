@@ -15,35 +15,55 @@ class Calculator
         this.completeFooterAnimationChange()
     }
 
-    clear()
-    {        
-        document.querySelector('#clear').onclick = () =>
-        {            
-            Array.from(document.querySelectorAll('input')).forEach((x) => 
+    clear() 
+    {
+        document.querySelector('#clear').onclick = () => 
+        {
+            document.querySelectorAll('input[type="radio"]').forEach(radio => 
             {
-                x.checked = false;
-                x.value = null;    
-            })                               
-        }
+                radio.checked = false;
+            });
+    
+            document.querySelectorAll('input').forEach(input => 
+            {
+                input.value = '';
+            });
+        
+            document.querySelectorAll('.radio-container span').forEach(span => 
+            {
+                span.classList.remove('selected');
+            });
+        };
     }
+    
     
     radioSpanSelector() 
     {
-        const radioInputSpans = document.querySelectorAll('.radio-container span');
-        const radioInput = document.querySelectorAll('input[type="radio"]');
-
-        radioInputSpans.forEach((input, index) => 
+        document.querySelectorAll('.radio-container span').forEach((span, index) => 
         {
-            input.onclick = () => 
+            span.onclick = () => 
             {
-                radioInput[index].checked = true;
-            }
-        })   
+                document.querySelectorAll('input[type="radio"]').forEach(radio => 
+                {
+                    radio.checked = false;
+                });
+                    
+                document.querySelectorAll('.radio-container span').forEach(span => 
+                {
+                    span.classList.remove('selected');
+                });
+    
+                document.querySelectorAll('input[type="radio"]')[index].checked = true;
+                span.classList.add('selected');
+            };
+        });
     }
+    
 
     completeFooterAnimationChange() 
     {    
-        document.querySelector('.submit').onclick = () => 
+        // document.querySelector('.submit').onclick
+        onload = () => 
         {
             document.querySelector('.default-footer').classList.add('hide');
             document.querySelector('.complete-footer').classList.add('show');
@@ -52,10 +72,9 @@ class Calculator
 
     errorValidation() // wip
     {
-        const submitButton = document.querySelector('.submit');
         const allInputs = document.querySelectorAll('input');
         
-        submitButton.onclick = () =>
+        document.querySelector('.submit').onclick = () =>
         {            
             // Array.from(allInputs).forEach((x) => 
             // {
@@ -80,6 +99,8 @@ class Calculator
             : input.value = '';
         }
     }    
+
+
 
 }
 const calculator = new Calculator();

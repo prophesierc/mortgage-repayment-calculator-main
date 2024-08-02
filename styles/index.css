@@ -3,6 +3,10 @@
 :root {
     /* ## Colors */
     --clr-lime: hsl(61, 70%, 52%);
+
+    --clr-lime-body: hsl(60, 72%, 93%);
+    --clr-lime-center: hsl(60, 67%, 55%);
+
     --clr-red: hsl(4, 69%, 50%);
     /* ### Neutral */
     --clr-white: hsl(0, 0%, 100%);
@@ -24,11 +28,6 @@
 * {
     box-sizing: border-box;
     padding: 0;
-    margin: 0;
-}
-
-html, body {
-    height: 100%;
     margin: 0;
 }
 
@@ -141,23 +140,66 @@ i {
     padding-bottom: 1em;
 }
 
-input[type='radio'] {
-    margin: 0 .5em 1em .8em;
-    width: 2em;
-    height: 15px;
-    cursor: pointer;
-}
-
 .repayment-container, .interest-container {
     border: 1px solid var(--clr-Slate-500);
     border-radius: 4px;
-    padding-top: .5em;
+    padding: 0.3em;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.repayment-container.selected, .interest-container.selected{
+    background-color: var(--clr-lime-body);
+    border-color: var(--clr-lime);
 }
 
 .repayment-container label, .interest-container label {
     color: var(--clr-Slate-900);
     font-weight: var(--fw-700);
+    font-size: var(--fs-paragraph);
+    cursor: pointer;
+    position: relative;
+    padding-left: 3em;
+}
+
+input[type='radio']:checked + label::before {
+    border-color: var(--clr-lime);
+    background-color: var(--clr-lime-body);
+}
+
+.repayment-container label::before, .interest-container label::before {
+    content: '';
+    position: absolute;
+    left: 0.5em;
+    top: 50%;
+    width: 1em;
+    height: 1em;
+    border-radius: 50%;
+    border: 2px solid var(--clr-Slate-500);
+    background-color: transparent;
+    transform: translateY(-50%);   
+}
+
+input[type='radio'] {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+
+input[type='radio']:checked + label::after {
+    content: '';
+    position: absolute;
+    left: 1.15em;
+    top: 50%;
+    width: 0.8em;
+    height: 0.8em;
+    border-radius: 50%;
+    background-color: var(--clr-lime);
+    transform: translate(-50%, -50%);
+    z-index: 1;
 }
 
 .submit {
@@ -248,19 +290,38 @@ h4 {
 }
 
 .complete-repayement-container{
-    height: 5em;
     background-color: var(--clr-footer-container);
 }
 
+.complete-repayement-container > p{
+    padding: .5em 0 .5em 1em;
+}
+
+.complete-repayement-container > :first-child{
+    padding-top: 1.5em;
+    margin-bottom: -1em;
+    border-top: 3px solid var(--clr-lime);
+    border-radius: 12px 12px 0 0;
+}
+
 .monthly-payments, .term-payments{
-    background-color: red;
+    font-size: 14px;
+    font-weight: var(--fw-500);
+    color: var(--clr-Slate-500);
 }
 .js-repayement{
-    background-color: green;
+    font-size: 34px;
+    margin-left: -.5em;
+    font-weight: var(--fw-700);
     color: var(--clr-lime);
 }
+hr{
+    margin: 0 1em 0 1em;
+}
 .js-repayement-total{
-    background-color: blue;
+    font-size: 24px;
+    margin: -.5em 0 0 -.2em;
+    font-weight: var(--fw-700);
     color: var(--clr-white);
 }
 
