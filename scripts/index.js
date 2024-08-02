@@ -12,7 +12,8 @@ class Calculator
         this.radioSpanSelector();
         this.errorValidation();
         this.toLocalStringInputFormatter();
-        this.completeFooterAnimationChange()
+        this.completeFooterAnimationChange();
+        this.calculations();
     }
 
     clear() 
@@ -100,7 +101,15 @@ class Calculator
         }
     }    
 
-
+    calculations()
+    {
+        const currencySymbol = '£'
+        const inputs = document.querySelectorAll('input[type="number"]');
+        
+        document.querySelector('.submit').onclick = () =>  
+            {console.log(inputs.textContent)}
+        document.querySelector('.js-repayement').textContent = `${currencySymbol} `
+    }
 
 }
 const calculator = new Calculator();
