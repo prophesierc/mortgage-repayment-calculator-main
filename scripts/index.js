@@ -48,11 +48,10 @@ class Calculator
             {
                 span.classList.remove('selected');
             });
-            this.values.mortgageAmount.original.value = '';
+            this.values.mortgageAmount.original = '';
             this.values.mortgageAmount.formatted = null;
         };
     }
-    
     
     radioSpanSelector() 
     {
@@ -79,8 +78,7 @@ class Calculator
 
     completeFooterAnimationChange() 
     {    
-        // document.querySelector('.submit').onclick
-        onload = () => 
+        document.querySelector('.submit').onclick = () => 
         {
             document.querySelector('.default-footer').classList.add('hide');
             document.querySelector('.complete-footer').classList.add('show');
@@ -118,15 +116,33 @@ class Calculator
         };
     }
 
-    calculations() 
+    calculations() // do not run if !errorValidation
     {
-        
         document.querySelector('.submit').onclick = () => 
         {
             const mortgageAmount = this.values.mortgageAmount.original;
-            const mortgageAmountFormatted = this.values.mortgageAmount.formatted;
+            const inputs = document.querySelectorAll('input[type="number"]');
+            const radios = document.querySelectorAll('input[type="radio"]');
+            const totalPayments = parseInt(inputs[0].value, 10) * 12;
+            const monthlyInterestRate = parseFloat(inputs[1].value) / 100 / 12;
+            let monthlyPayment;
+            let totalRepayment;
+    
+            if (radios[0].checked) 
+            {
+                monthlyPayment = (mortgageAmount * monthlyInterestRate) / (1 - Math.pow(1 + monthlyInterestRate, -totalPayments));
+            } 
+            else if (radios[1].checked) 
+            {
+                monthlyPayment = mortgageAmount * monthlyInterestRate;
+            }
 
-            document.querySelector('.js-repayement').textContent = mortgageAmountFormatted;
+            totalRepayment = monthlyPayment * totalPayments;
+            this.values.mortgageAmount.formatted = monthlyPayment.toLocaleString();
+    
+            document.querySelector('.js-repayement').textContent = this.values.mortgageAmount.formatted;
+
+            document.querySelector('.js-repayement-total').textContent = totalRepayment.toLocaleString();
         };
     }
 

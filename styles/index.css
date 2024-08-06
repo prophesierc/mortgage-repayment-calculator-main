@@ -188,7 +188,6 @@ input[type='radio'] {
     pointer-events: none;
 }
 
-
 input[type='radio']:checked + label::after {
     content: '';
     position: absolute;
@@ -281,7 +280,6 @@ h4 {
     font-weight: var(--fw-500);
 }
 
-
 .complete-footer-text {
     font-size: 14px;
     font-weight: var(--fw-500);
@@ -323,6 +321,7 @@ h4 {
 hr{
     margin: 0 1em 0 1em;
 }
+
 .js-repayement-total{
     font-size: 24px;
     margin: -.5em 0 0 -.2em;
