@@ -22,7 +22,6 @@ class Calculator
         this.errorValidation();
         this.toLocalStringInputFormatter();
         this.completeFooterAnimationChange();
-        this.calculations();
     }
 
     cacheElements() 
@@ -48,8 +47,11 @@ class Calculator
             {
                 span.classList.remove('selected');
             });
+            
             this.values.mortgageAmount.original = '';
             this.values.mortgageAmount.formatted = null;
+            document.querySelector('.complete-footer').classList.remove('show');
+            document.querySelector('.default-footer').classList.remove('hide');
         };
     }
     
@@ -77,12 +79,13 @@ class Calculator
     
 
     completeFooterAnimationChange() 
-    {    
+    {
         document.querySelector('.submit').onclick = () => 
         {
+            this.calculations();
             document.querySelector('.default-footer').classList.add('hide');
             document.querySelector('.complete-footer').classList.add('show');
-        }
+        };
     }
 
     errorValidation() // wip
@@ -118,32 +121,31 @@ class Calculator
 
     calculations() // do not run if !errorValidation
     {
-        document.querySelector('.submit').onclick = () => 
+        
+        const mortgageAmount = this.values.mortgageAmount.original;
+        const inputs = document.querySelectorAll('input[type="number"]');
+        const radios = document.querySelectorAll('input[type="radio"]');
+        const totalPayments = parseInt(inputs[0].value, 10) * 12;
+        const monthlyInterestRate = parseFloat(inputs[1].value) / 100 / 12;
+        let monthlyPayment;
+        let totalRepayment;
+
+        if (radios[0].checked) 
         {
-            const mortgageAmount = this.values.mortgageAmount.original;
-            const inputs = document.querySelectorAll('input[type="number"]');
-            const radios = document.querySelectorAll('input[type="radio"]');
-            const totalPayments = parseInt(inputs[0].value, 10) * 12;
-            const monthlyInterestRate = parseFloat(inputs[1].value) / 100 / 12;
-            let monthlyPayment;
-            let totalRepayment;
-    
-            if (radios[0].checked) 
-            {
-                monthlyPayment = (mortgageAmount * monthlyInterestRate) / (1 - Math.pow(1 + monthlyInterestRate, -totalPayments));
-            } 
-            else if (radios[1].checked) 
-            {
-                monthlyPayment = mortgageAmount * monthlyInterestRate;
-            }
+            monthlyPayment = (mortgageAmount * monthlyInterestRate) / (1 - Math.pow(1 + monthlyInterestRate, -totalPayments));
+        } 
+        else if (radios[1].checked) 
+        {
+            monthlyPayment = mortgageAmount * monthlyInterestRate;
+        }
 
-            totalRepayment = monthlyPayment * totalPayments;
-            this.values.mortgageAmount.formatted = monthlyPayment.toLocaleString();
-    
-            document.querySelector('.js-repayement').textContent = this.values.mortgageAmount.formatted;
+        totalRepayment = monthlyPayment * totalPayments;
+        this.values.mortgageAmount.formatted = monthlyPayment.toLocaleString();
 
-            document.querySelector('.js-repayement-total').textContent = totalRepayment.toLocaleString();
-        };
+        document.querySelector('.js-repayement').textContent = this.values.mortgageAmount.formatted;
+
+        document.querySelector('.js-repayement-total').textContent = totalRepayment.toLocaleString();
+        
     }
 
 }
