@@ -90,7 +90,6 @@ class Calculator
     toLocalStringInputFormatter() 
     {
         const input = document.querySelector('input[type="text"]');
-    
         input.oninput = () => 
         {
             const numericValue = input.value.replace(/[^\d]/g, '');
@@ -103,12 +102,19 @@ class Calculator
 
     calculations()
     {
-        const currencySymbol = '£'
+        const mortgageAmount = document.querySelectorAll('input[type="text"]');
+        console.log(mortgageAmount)
         const inputs = document.querySelectorAll('input[type="number"]');
+        console.log(inputs)
+        const radios = document.querySelectorAll('input[type="radio"]');
+        console.log(radios)
+        
         
         document.querySelector('.submit').onclick = () =>  
-            {console.log(inputs.textContent)}
-        document.querySelector('.js-repayement').textContent = `${currencySymbol} `
+        {
+            document.querySelector('.js-repayement').textContent = inputs[0].value
+            document.querySelector('.js-repayement-total').textContent = 5
+        }
     }
 
 }

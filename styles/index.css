@@ -315,6 +315,11 @@ h4 {
     font-weight: var(--fw-700);
     color: var(--clr-lime);
 }
+
+.js-repayement::before{
+    content: "£";
+}
+
 hr{
     margin: 0 1em 0 1em;
 }
@@ -323,6 +328,10 @@ hr{
     margin: -.5em 0 0 -.2em;
     font-weight: var(--fw-700);
     color: var(--clr-white);
+}
+
+.js-repayement-total::before{
+    content: "£";
 }
 
 .attribution {
