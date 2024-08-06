@@ -1,19 +1,33 @@
-class Calculator
+class Calculator 
 {
-    
-    constructor()
+
+    constructor() 
     {
+        this.values = 
+        {
+            mortgageAmount: 
+            {
+                original: null, // stores pre formatted cached value
+                formatted: null // stores formatted cached value
+            }
+        };
         this.init();
     }
 
     init()
     {
+        this.cacheElements();
         this.clear();
         this.radioSpanSelector();
         this.errorValidation();
         this.toLocalStringInputFormatter();
         this.completeFooterAnimationChange();
         this.calculations();
+    }
+
+    cacheElements() 
+    {
+        this.values.mortgageAmount.original = document.querySelector('input[type="text"]');
     }
 
     clear() 
@@ -34,6 +48,8 @@ class Calculator
             {
                 span.classList.remove('selected');
             });
+            this.values.mortgageAmount.original.value = '';
+            this.values.mortgageAmount.formatted = null;
         };
     }
     
@@ -89,32 +105,29 @@ class Calculator
 
     toLocalStringInputFormatter() 
     {
-        const input = document.querySelector('input[type="text"]');
+        const input = this.values.mortgageAmount.original;
         input.oninput = () => 
         {
-            const numericValue = input.value.replace(/[^\d]/g, '');
+            const formattedValue = input.value.replace(/[^\d]/g, '');
 
-            numericValue !== '' 
-            ? input.value = parseInt(numericValue, 10).toLocaleString() 
-            : input.value = '';
-        }
-    }    
+            this.values.mortgageAmount.original = formattedValue ? parseInt(formattedValue, 10) : null;
 
-    calculations()
+            this.values.mortgageAmount.formatted = formattedValue ? parseInt(formattedValue, 10).toLocaleString() : '';
+
+            input.value = this.values.mortgageAmount.formatted;
+        };
+    }
+
+    calculations() 
     {
-        const mortgageAmount = document.querySelectorAll('input[type="text"]');
-        console.log(mortgageAmount)
-        const inputs = document.querySelectorAll('input[type="number"]');
-        console.log(inputs)
-        const radios = document.querySelectorAll('input[type="radio"]');
-        console.log(radios)
         
-        
-        document.querySelector('.submit').onclick = () =>  
+        document.querySelector('.submit').onclick = () => 
         {
-            document.querySelector('.js-repayement').textContent = inputs[0].value
-            document.querySelector('.js-repayement-total').textContent = 5
-        }
+            const mortgageAmount = this.values.mortgageAmount.original;
+            const mortgageAmountFormatted = this.values.mortgageAmount.formatted;
+
+            document.querySelector('.js-repayement').textContent = mortgageAmountFormatted;
+        };
     }
 
 }
