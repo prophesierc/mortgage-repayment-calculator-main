@@ -75,9 +75,13 @@ h1, h3, h4 {
 }
 
 .errorText {
-    display: block;
+    display: none;
     color: var(--clr-red);
     margin-top: .5em;
+}
+
+.errorText.display{
+    display: block;
 }
 
 label, #clear, h2 {

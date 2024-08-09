@@ -89,9 +89,21 @@ class Calculator
 
     errorValidation() // wip
     {
-        inputsErrors = 
+        const submit = document.querySelector('.submit');
+
+        document.querySelectorAll('input[type="radio"]').forEach(radio => 
         {
-            
+            radio.checked = false;
+        });
+
+        document.querySelectorAll('input').forEach(input => 
+        {
+            input.value = '';
+        });
+
+        submit.onclick = () =>
+        {
+            document.querySelectorAll('.errorText').classList.add('.errorText.display')
         }
     }
 
