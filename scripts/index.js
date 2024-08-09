@@ -47,7 +47,7 @@ class Calculator
             {
                 span.classList.remove('selected');
             });
-            
+
             this.values.mortgageAmount.original = '';
             this.values.mortgageAmount.formatted = null;
             document.querySelector('.complete-footer').classList.remove('show');
@@ -77,7 +77,6 @@ class Calculator
         });
     }
     
-
     completeFooterAnimationChange() 
     {
         document.querySelector('.submit').onclick = () => 
@@ -90,17 +89,9 @@ class Calculator
 
     errorValidation() // wip
     {
-        const allInputs = document.querySelectorAll('input');
-        
-        document.querySelector('.submit').onclick = () =>
-        {            
-            // Array.from(allInputs).forEach((x) => 
-            // {
-            //     if (x.checked === false || x.value === null)
-            //     {
-            //         console.log(x.value)
-            //     };
-            // }) 
+        inputsErrors = 
+        {
+            
         }
     }
 
@@ -121,7 +112,6 @@ class Calculator
 
     calculations() // do not run if !errorValidation
     {
-        
         const mortgageAmount = this.values.mortgageAmount.original;
         const inputs = document.querySelectorAll('input[type="number"]');
         const radios = document.querySelectorAll('input[type="radio"]');
@@ -145,7 +135,6 @@ class Calculator
         document.querySelector('.js-repayement').textContent = this.values.mortgageAmount.formatted;
 
         document.querySelector('.js-repayement-total').textContent = totalRepayment.toLocaleString();
-        
     }
 
 }
