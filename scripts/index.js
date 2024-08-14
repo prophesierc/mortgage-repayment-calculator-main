@@ -21,7 +21,6 @@ class Calculator
         this.radioSpanSelector();
         this.errorValidation();
         this.toLocalStringInputFormatter();
-        // this.completeFooterAnimationChange();
     }
 
     cacheElements() 
@@ -87,13 +86,35 @@ class Calculator
         };
     }
 
-    errorValidation() // wip
+    errorValidation()
     {
         const submit = document.querySelector('.submit');
+        const errorText = document.querySelectorAll('.errorText')
+        const inputs = document.querySelectorAll('input[type="text"], input[type="number"], input[type="radio"]');
         
-        submit.onclick = () =>
+        submit.onclick = () => 
         {
-            document.querySelectorAll('.errorText').forEach(i => i.classList.add('display'))
+
+            
+            errorText.forEach((errorText, index) => 
+            {
+                
+                const input = inputs[index];
+
+                input.type === "radio" 
+                && !document.querySelector('input[name="mortgage-type"]:checked')
+                || input.value.trim() === ""
+                    ? errorText.classList.add('display') 
+                    : errorText.classList.remove('display');
+
+                if (errorText.classList.contains('display'))
+                {
+                    console.log('test')
+                    this.completeFooterAnimationChange();
+                }
+                //wip -- need to check if errors first then run function else
+            });
+            
         }
     }
 
