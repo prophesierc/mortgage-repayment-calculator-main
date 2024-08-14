@@ -21,7 +21,7 @@ class Calculator
         this.radioSpanSelector();
         this.errorValidation();
         this.toLocalStringInputFormatter();
-        this.completeFooterAnimationChange();
+        // this.completeFooterAnimationChange();
     }
 
     cacheElements() 
@@ -90,20 +90,10 @@ class Calculator
     errorValidation() // wip
     {
         const submit = document.querySelector('.submit');
-
-        document.querySelectorAll('input[type="radio"]').forEach(radio => 
-        {
-            radio.checked = false;
-        });
-
-        document.querySelectorAll('input').forEach(input => 
-        {
-            input.value = '';
-        });
-
+        
         submit.onclick = () =>
         {
-            document.querySelectorAll('.errorText').classList.add('.errorText.display')
+            document.querySelectorAll('.errorText').forEach(i => i.classList.add('display'))
         }
     }
 
