@@ -94,9 +94,10 @@ class Calculator
         
         submit.onclick = () => 
         {       
-            let hasError = false     
+            let hasError = false  
+            
             errorText.forEach((errorText, index) => 
-            {
+            {        
                 const input = inputs[index];                
 
                 input.type === "radio" 
@@ -104,12 +105,12 @@ class Calculator
                 || input.value.trim() === ""
                 ? ((errorText.classList.add('display'), hasError = true))
                 : errorText.classList.remove('display');                    
-
-                if (!hasError)
-                {
-                    this.completeFooterAnimationChange()
-                }
             });                        
+            
+            if (!hasError)
+            {        
+                this.completeFooterAnimationChange()
+            }
         }
     }
 
