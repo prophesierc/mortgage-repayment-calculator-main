@@ -90,31 +90,26 @@ class Calculator
     {
         const submit = document.querySelector('.submit');
         const errorText = document.querySelectorAll('.errorText')
-        const inputs = document.querySelectorAll('input[type="text"], input[type="number"], input[type="radio"]');
+        const inputs = document.querySelectorAll('input[type="text"], input[type="number"], input[type="radio"]');        
         
         submit.onclick = () => 
-        {
-
-            
+        {       
+            let hasError = false     
             errorText.forEach((errorText, index) => 
             {
-                
-                const input = inputs[index];
+                const input = inputs[index];                
 
                 input.type === "radio" 
                 && !document.querySelector('input[name="mortgage-type"]:checked')
                 || input.value.trim() === ""
-                    ? errorText.classList.add('display') 
-                    : errorText.classList.remove('display');
+                ? ((errorText.classList.add('display'), hasError = true))
+                : errorText.classList.remove('display');                    
 
-                if (errorText.classList.contains('display'))
+                if (!hasError)
                 {
-                    console.log('test')
-                    this.completeFooterAnimationChange();
+                    this.completeFooterAnimationChange()
                 }
-                //wip -- need to check if errors first then run function else
-            });
-            
+            });                        
         }
     }
 
@@ -133,7 +128,7 @@ class Calculator
         };
     }
 
-    calculations() // do not run if !errorValidation
+    calculations()
     {
         const mortgageAmount = this.values.mortgageAmount.original;
         const inputs = document.querySelectorAll('input[type="number"]');
