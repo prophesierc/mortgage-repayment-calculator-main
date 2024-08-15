@@ -1,6 +1,5 @@
 class Calculator 
 {
-
     constructor() 
     {
         this.values = 
@@ -36,23 +35,31 @@ class Calculator
             {
                 radio.checked = false;
             });
-    
-            document.querySelectorAll('input').forEach(input => 
+
+            document.querySelectorAll('input[type="text"], input[type="number"]').forEach(input => 
             {
-                input.value = '';
+                input.value = null;
             });
-        
+
             document.querySelectorAll('.radio-container span').forEach(span => 
             {
                 span.classList.remove('selected');
             });
 
-            this.values.mortgageAmount.original = '';
+            document.querySelectorAll('.errorText').forEach(errorText => 
+            {
+                errorText.classList.remove('display');
+            });
+
+            this.values.mortgageAmount.original = null;
             this.values.mortgageAmount.formatted = null;
+
             document.querySelector('.complete-footer').classList.remove('show');
             document.querySelector('.default-footer').classList.remove('hide');
         };
     }
+
+
     
     radioSpanSelector() 
     {
@@ -78,12 +85,9 @@ class Calculator
     
     completeFooterAnimationChange() 
     {
-        document.querySelector('.submit').onclick = () => 
-        {
-            this.calculations();
-            document.querySelector('.default-footer').classList.add('hide');
-            document.querySelector('.complete-footer').classList.add('show');
-        };
+        this.calculations();
+        document.querySelector('.default-footer').classList.add('hide');
+        document.querySelector('.complete-footer').classList.add('show');
     }
 
     errorValidation()
@@ -155,6 +159,6 @@ class Calculator
 
         document.querySelector('.js-repayement-total').textContent = totalRepayment.toLocaleString();
     }
-
 }
+
 const calculator = new Calculator();
