@@ -39,6 +39,7 @@ class Calculator
             document.querySelectorAll('input[type="text"], input[type="number"]').forEach(input => 
             {
                 input.value = null;
+                
             });
 
             document.querySelectorAll('.radio-container span').forEach(span => 
@@ -160,5 +161,4 @@ class Calculator
         document.querySelector('.js-repayement-total').textContent = totalRepayment.toLocaleString();
     }
 }
-
 const calculator = new Calculator();
