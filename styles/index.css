@@ -116,7 +116,7 @@ i {
 }
 
 .currency-container input {
-    background: linear-gradient(to left, white 90%, var(--clr-Slate-100) 10%) right;
+    background: linear-gradient(to left, white 89%, var(--clr-Slate-100) 9%) right;
     padding-left: 15%;
 }
 
@@ -126,7 +126,7 @@ i {
 }
 
 .years-container input {
-    background: linear-gradient(to left, var(--clr-Slate-100) 22%, white 15%) right;
+    background: linear-gradient(to left, var(--clr-Slate-100) 25%, white 15%) right;
 }
 
 #years {
@@ -135,7 +135,7 @@ i {
 }
 
 .percent-container input {
-    background: linear-gradient(to left, var(--clr-Slate-100) 15%, white 15%) right;
+    background: linear-gradient(to left, var(--clr-Slate-100) 18%, white 15%) right;
 }
 
 #percent {
@@ -220,12 +220,13 @@ input[type='radio']:checked + label::after {
     height: 3em;
     background-color: var(--clr-lime);
     border: none;
-    border-radius: 18px;
+    border-radius: 25px;
     background-image: url('../assets/images/icon-calculator.svg');
     background-repeat: no-repeat;
     background-position: 15%;
     margin-bottom: 1.5em;
     cursor: pointer;
+    margin-top: 1em;
 }
 
 .footer-container {
@@ -366,28 +367,61 @@ hr{
 
  /* tablet */
 
-@media (min-width: 600px) {
+ @media (min-width: 700px) {
+    main {
+        margin: 2em;
+    }
+
+    body {
+        background-color: var(--clr-Slate-100);
+    }
+
+    .calculator-container {
+        background-color: var(--clr-white);
+        border-radius: 20px 20px 0 0;
+        width: 100%;
+        padding: 0 2em;
+    }
+
+    .header-container {
+        display: flex;
+        margin-bottom: 1em;
+    }
+    
+    #clear {
+        margin: 30px -3em 0 auto;
+    }
+
     .input-row {
-        display: flex; 
-        justify-content: space-between; 
+        display: flex;
+        justify-content: space-between;
     }
 
     .years-container,
     .percent-container {
         width: calc(50% - 5px);
-        margin-bottom: 0; 
+        margin-bottom: 0;
     }
 
-    #years{
-        margin-left: -3.35em;
-    } 
-    
-    #percent{
+    #years {
+        margin-left: -3em;
+    }
+
+    #percent {
         margin-left: -1.85em;
     }
 
     .submit {
-        width: 50%;
-        background-position: 10%;
+        width: 55%;
+        background-position: 8%;
+    }
+
+    .footer-container {
+        border-radius: 0 0 20px 20px;
+    }
+
+    .default-footer-text {
+        font-size: 14px;
+        margin: 0 2em;
     }
 }
