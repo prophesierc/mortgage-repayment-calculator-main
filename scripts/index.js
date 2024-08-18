@@ -60,8 +60,6 @@ class Calculator
         };
     }
 
-
-    
     radioSpanSelector() 
     {
         document.querySelectorAll('.radio-container span').forEach((span, index) => 

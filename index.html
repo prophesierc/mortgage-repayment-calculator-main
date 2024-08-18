@@ -27,17 +27,18 @@
       </div>
       
       <label for="mortgage-term">Mortgage Term</label>
-      <div class="years-container">
-        <input type="number" id="mortgage-term" name="mortgage-term" min="0" max="100">
-        <i id="years">years</i>
-        <p class="errorText">This field is required</p>
-      </div>
-
-      <label for="interest-rate">Interest Rate</label>
-      <div class="percent-container">
-        <input type="number" id="interest-rate" name="interest-rate" min="0">
-        <i id="percent">%</i>
-        <p class="errorText">This field is required</p>
+      <div class="input-row">
+        <div class="years-container">
+          <input type="number" id="mortgage-term" name="mortgage-term" min="0" />
+          <i id="years">years</i>
+          <p class="errorText">This field is required</p>
+        </div>
+      
+        <div class="percent-container">
+          <input type="number" id="interest-rate" name="interest-rate" min="0" />
+          <i id="percent">%</i>
+          <p class="errorText">This field is required</p>
+        </div>
       </div>
 
       <h2>Mortgage Type</h2>

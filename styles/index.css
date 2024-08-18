@@ -93,8 +93,9 @@ label, #clear, h2 {
     margin-top: 1em;
 }
 
-input[type='number']{
-    /* flex max width to allow combining rows */
+input[type='number'] {
+    width: 100%;
+    margin-bottom: 10px; 
 }
 
 input[type='number'], input[type='text'] {
@@ -115,7 +116,7 @@ i {
 }
 
 .currency-container input {
-    background: linear-gradient(to left, white 88%, var(--clr-Slate-100) 12%) right;
+    background: linear-gradient(to left, white 90%, var(--clr-Slate-100) 10%) right;
     padding-left: 15%;
 }
 
@@ -351,4 +352,42 @@ hr{
 
 .attribution a {
     color: hsl(228, 45%, 44%);
+}
+
+.input-row {
+    display: block;
+}
+
+.years-container,
+.percent-container {
+    width: 100%; 
+    margin-bottom: 10px; 
+}
+
+ /* tablet */
+
+@media (min-width: 600px) {
+    .input-row {
+        display: flex; 
+        justify-content: space-between; 
+    }
+
+    .years-container,
+    .percent-container {
+        width: calc(50% - 5px);
+        margin-bottom: 0; 
+    }
+
+    #years{
+        margin-left: -3.35em;
+    } 
+    
+    #percent{
+        margin-left: -1.85em;
+    }
+
+    .submit {
+        width: 50%;
+        background-position: 10%;
+    }
 }
