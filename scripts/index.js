@@ -47,9 +47,14 @@ class Calculator
                 span.classList.remove('selected');
             });
 
-            document.querySelectorAll('.errorText').forEach(errorText => 
+            document.querySelectorAll('.errorText').forEach(error => 
             {
-                errorText.classList.remove('display');
+                error.classList.remove('display');
+            });
+
+            document.querySelectorAll('.inputClassJS').forEach(error => 
+            {
+                error.classList.remove('error');
             });
 
             this.values.mortgageAmount.original = null;
@@ -89,33 +94,39 @@ class Calculator
         document.querySelector('.complete-footer').classList.add('show');
     }
 
-    errorValidation()
+    errorValidation() 
     {
         const submit = document.querySelector('.submit');
-        const errorText = document.querySelectorAll('.errorText')
-        const inputs = document.querySelectorAll('input[type="text"], input[type="number"], input[type="radio"]');        
-        
+        const errorText = document.querySelectorAll('.errorText');
+        const inputs = document.querySelectorAll('input[type="text"], input[type="number"], input[type="radio"]');    
+    
         submit.onclick = () => 
         {       
-            let hasError = false  
-            
-            errorText.forEach((errorText, index) => 
+            let hasError = false;
+    
+            errorText.forEach((error, index) => 
             {        
-                const input = inputs[index];                
-
-                input.type === "radio" 
-                && !document.querySelector('input[name="mortgage-type"]:checked')
-                || input.value.trim() === ""
-                ? ((errorText.classList.add('display'), hasError = true))
-                : errorText.classList.remove('display');                    
-            });                        
-            
-            if (!hasError)
+                const errorInput = inputs[index];
+                const borderInput = inputs[index];
+    
+                const hasValidationError = 
+                    (errorInput.type === "radio" && !document.querySelector('input[name="mortgage-type"]:checked')) 
+                    || errorInput.value.trim() === "";
+    
+                error.classList.toggle('display', hasValidationError);
+                borderInput && borderInput.classList.toggle('error', hasValidationError);
+                borderInput && borderInput.classList.toggle('dynamic-error', hasValidationError);
+    
+                hasError = hasError || hasValidationError;
+            });                          
+    
+            if (!hasError) 
             {        
-                this.completeFooterAnimationChange()
+                this.completeFooterAnimationChange();
             }
-        }
+        };
     }
+    
 
     toLocalStringInputFormatter() 
     {

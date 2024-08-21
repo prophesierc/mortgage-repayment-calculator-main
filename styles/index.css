@@ -1,13 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
 
 :root {
-    /* ## Colors */
     --clr-lime: hsl(61, 70%, 52%);
     --clr-lime-body: hsl(60, 72%, 93%);
     --clr-lime-center: hsl(60, 67%, 55%);
     --clr-red: hsl(4, 69%, 50%);
-
-    /* ### Neutral */
     --clr-white: hsl(0, 0%, 100%);
     --clr-Slate-100: hsl(202, 86%, 94%);
     --clr-Slate-300: hsl(203, 41%, 72%);
@@ -15,12 +12,7 @@
     --clr-Slate-700: hsl(200, 24%, 40%);
     --clr-Slate-900: hsl(202, 55%, 16%);
     --clr-footer-container: hsl(204, 57%, 13%);
-   
-    /* ## Typography */
-    /* ### Body Copy */
-   --fs-paragraph: 16px;
-
-    /* ### Font */
+    --fs-paragraph: 16px;
     --ff-Plus-Jakarata-Sans: 'Plus Jakarta Sans', sans-serif;
     --fw-500: 500;
     --fw-700: 700;
@@ -71,18 +63,29 @@ h1, h3, h4 {
     width: 18%;
 }
 
-.errorStatus {
-    background: linear-gradient(to left, white 88%, var(--clr-Slate-100) 12%) right;
-}
-
 .errorText {
     display: none;
     color: var(--clr-red);
     margin-top: .5em;
 }
 
-.errorText.display{
+.errorText.display {
     display: block;
+}
+.inputClassJS.error {
+    border: 1px solid var(--clr-red);
+    background: linear-gradient(to left, white 89%, var(--clr-red) 9%) right;
+}
+.dynamic-error {
+    background: linear-gradient(to left, var(--clr-red) 25%, white 15%) right;
+}
+
+.years-container .inputClassJS.error {
+    background: linear-gradient(to left, var(--clr-red) 25%, white 15%) right;
+}
+
+.percent-container .inputClassJS.error {
+    background: linear-gradient(to left, var(--clr-red) 18%, white 15%) right;
 }
 
 label, #clear, h2 {
@@ -91,11 +94,6 @@ label, #clear, h2 {
     font-weight: var(--fw-500);
     margin-bottom: .5em;
     margin-top: 1em;
-}
-
-input[type='number'] {
-    width: 100%;
-    margin-bottom: 10px; 
 }
 
 input[type='number'], input[type='text'] {
@@ -115,11 +113,15 @@ i {
     position: absolute;
 }
 
-.currency-container input {
+.currency-container input,
+.years-container input,
+.percent-container input {
     background: linear-gradient(to left, white 89%, var(--clr-Slate-100) 9%) right;
-    padding-left: 15%;
 }
 
+.currency-container input{
+    padding-left: 15%;
+}
 #currency {
     margin-left: 4%;
     margin-top: .5em;
@@ -130,8 +132,8 @@ i {
 }
 
 #years {
-    margin-left: -16%;
-    margin-top: .5em;
+    margin: .5em;
+    left: 75%;
 }
 
 .percent-container input {
@@ -139,8 +141,8 @@ i {
 }
 
 #percent {
-    margin-left: -9%;
-    margin-top: .5em;
+    margin: .5em;
+    left: 82%;
 }
 
 .radio-container {
@@ -161,7 +163,7 @@ i {
     height: 3em;
 }
 
-.repayment-container.selected, .interest-container.selected{
+.repayment-container.selected, .interest-container.selected {
     background-color: var(--clr-lime-body);
     border-color: var(--clr-lime);
 }
@@ -190,7 +192,7 @@ input[type='radio']:checked + label::before {
     border-radius: 50%;
     border: 2px solid var(--clr-Slate-500);
     background-color: transparent;
-    transform: translateY(-50%);   
+    transform: translateY(-50%);
 }
 
 input[type='radio'] {
@@ -233,7 +235,7 @@ input[type='radio']:checked + label::after {
     width: 100%;
     height: 24em;
     background-color: var(--clr-Slate-900);
-    position: relative; 
+    position: relative;
     overflow: hidden;
 }
 
@@ -278,7 +280,7 @@ h3 {
     padding: 2em 2em 7em 1.5em;
     opacity: 0;
     transform: translateY(100%);
-    z-index: 2; 
+    z-index: 2;
 }
 
 .complete-footer.show {
@@ -300,51 +302,52 @@ h4 {
     margin-bottom: 1.5em;
 }
 
-.complete-repayement-container{
+.complete-repayement-container {
     background-color: var(--clr-footer-container);
 }
 
-.complete-repayement-container > p{
+.complete-repayement-container > p {
     padding: .5em 0 .5em 1em;
 }
 
-.complete-repayement-container > :first-child{
+.complete-repayement-container > :first-child {
     padding-top: 1.5em;
     margin-bottom: -1em;
     border-top: 3px solid var(--clr-lime);
     border-radius: 12px 12px 0 0;
 }
 
-.monthly-payments, .term-payments{
+.monthly-payments, .term-payments {
     font-size: 14px;
     font-weight: var(--fw-500);
     color: var(--clr-Slate-500);
 }
-.js-repayement{
+
+.js-repayement {
     font-size: 34px;
     margin-left: -.5em;
     font-weight: var(--fw-700);
     color: var(--clr-lime);
 }
 
-.js-repayement::before{
+.js-repayement::before {
     content: "£";
 }
 
-hr{
+hr {
     margin: 0 1em 0 1em;
     border-color: var(--clr-Slate-900);
     margin-bottom: .5em;
 }
 
-.js-repayement-total{
+.js-repayement-total {
     font-size: 24px;
     margin: -.5em 0 0 -.2em;
     font-weight: var(--fw-700);
     color: var(--clr-white);
 }
 
-.js-repayement-total::before{
+.js-repayement-total::before {
     content: "£";
 }
 
@@ -357,73 +360,59 @@ hr{
     color: hsl(228, 45%, 44%);
 }
 
-.input-row {
-    display: block;
-}
-
 .years-container,
 .percent-container {
-    width: 100%; 
-    margin-bottom: 10px; 
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
 }
 
- /* tablet */
+.years-container label,
+.percent-container label {
+    margin-bottom: 0;
+    width: 100%;
+}
 
- @media (min-width: 700px) {
-    main {
-        margin: 2em;
-    }
+.years-container input,
+.percent-container input {
+    width: 100%;
+}
 
-    body {
-        background-color: var(--clr-Slate-100);
-    }
+.input-group {
+    display: flex;
+    flex-direction: column;
+}
 
-    .calculator-container {
-        background-color: var(--clr-white);
-        border-radius: 20px 20px 0 0;
-        width: 100%;
-        padding: 0 2em;
-    }
-
-    .header-container {
-        display: flex;
-        margin-bottom: 1em;
-    }
-    
-    #clear {
-        margin: 30px -3em 0 auto;
-    }
-
-    .input-row {
+@media (min-width: 700px) {
+    .termAndRateContainer {
         display: flex;
         justify-content: space-between;
+        gap: 10px;
+    }
+
+    .input-group {
+        width: calc(50% - 10px);
     }
 
     .years-container,
     .percent-container {
-        width: calc(50% - 5px);
-        margin-bottom: 0;
+        flex-direction: column;
+    }
+
+    .years-container input,
+    .percent-container input {
+        width: 100%;
     }
 
     #years {
-        margin-left: -3em;
+        left: 38.5%;
     }
-
+    
     #percent {
-        margin-left: -1.85em;
+        left: 88.5%;
     }
-
-    .submit {
-        width: 55%;
-        background-position: 8%;
-    }
-
-    .footer-container {
-        border-radius: 0 0 20px 20px;
-    }
-
-    .default-footer-text {
-        font-size: 14px;
-        margin: 0 2em;
+    .submit{
+        width: 60%;
     }
 }
