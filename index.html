@@ -22,18 +22,17 @@
       <label for="mortgage-amount">Mortgage Amount</label>
 
       <div class="currency-container">
-        <i id="currency">£</i>
+        <i id="currency" class="errorColorChanger">£</i>
         <input type="text" id="mortgage-amount" name="mortgage-amount" min="0" class="inputClassJS"/>
         <p class="errorText">This field is required</p>
       </div>
 
-      <!-- wip -->
       <div class="termAndRateContainer">
         <div class="input-group">
           <label for="mortgage-term">Mortgage Term</label>
           <div class="years-container">
             <input type="number" id="mortgage-term" name="mortgage-term" min="0" class="inputClassJS"/>
-            <i id="years">years</i>
+            <i id="years" class="errorColorChanger" >years</i>
             <p class="errorText">This field is required</p>
           </div>
         </div>
@@ -42,13 +41,11 @@
           <label for="interest-rate">Interest Rate</label>
           <div class="percent-container">
             <input type="number" id="interest-rate" name="interest-rate" min="0" class="inputClassJS"/>
-            <i id="percent">%</i>
+            <i id="percent" class="errorColorChanger" >%</i>
             <p class="errorText">This field is required</p>
           </div>
         </div>
-      </div>
-    
-    
+      </div>   
 
       <h2>Mortgage Type</h2>
       <div class="radio-container">

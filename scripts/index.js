@@ -57,6 +57,10 @@ class Calculator
                 error.classList.remove('error');
             });
 
+            document.querySelectorAll('.errorColorChanger').forEach(icon => {
+                icon.classList.remove('changer');
+            });
+
             this.values.mortgageAmount.original = null;
             this.values.mortgageAmount.formatted = null;
 
@@ -98,7 +102,7 @@ class Calculator
     {
         const submit = document.querySelector('.submit');
         const errorText = document.querySelectorAll('.errorText');
-        const inputs = document.querySelectorAll('input[type="text"], input[type="number"], input[type="radio"]');    
+        const inputs = document.querySelectorAll('input[type="text"], input[type="number"], input[type="radio"]');   
     
         submit.onclick = () => 
         {       
@@ -108,6 +112,7 @@ class Calculator
             {        
                 const errorInput = inputs[index];
                 const borderInput = inputs[index];
+                const errorIcon = document.querySelectorAll('.errorColorChanger')[index];
     
                 const hasValidationError = 
                     (errorInput.type === "radio" && !document.querySelector('input[name="mortgage-type"]:checked')) 
@@ -116,9 +121,14 @@ class Calculator
                 error.classList.toggle('display', hasValidationError);
                 borderInput && borderInput.classList.toggle('error', hasValidationError);
                 borderInput && borderInput.classList.toggle('dynamic-error', hasValidationError);
+                borderInput && borderInput.classList.toggle('errorClass', hasValidationError);
+                if (errorIcon) 
+                {
+                    errorIcon.classList.toggle('changer', hasValidationError);
+                }
     
                 hasError = hasError || hasValidationError;
-            });                          
+            });
     
             if (!hasError) 
             {        
@@ -126,6 +136,7 @@ class Calculator
             }
         };
     }
+    
     
 
     toLocalStringInputFormatter() 

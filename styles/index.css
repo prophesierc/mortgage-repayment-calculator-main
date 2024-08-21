@@ -79,13 +79,17 @@ h1, h3, h4 {
 .dynamic-error {
     background: linear-gradient(to left, var(--clr-red) 25%, white 15%) right;
 }
-
 .years-container .inputClassJS.error {
     background: linear-gradient(to left, var(--clr-red) 25%, white 15%) right;
 }
-
 .percent-container .inputClassJS.error {
     background: linear-gradient(to left, var(--clr-red) 18%, white 15%) right;
+}
+.errorColorChanger {
+    color: var(--clr-Slate-700); 
+}
+.errorColorChanger.changer {
+    color: var(--clr-white); 
 }
 
 label, #clear, h2 {
@@ -109,7 +113,6 @@ input[type='number'], input[type='text'] {
 
 i {
     font-weight: var(--fw-700);
-    color: var(--clr-Slate-700);
     position: absolute;
 }
 
