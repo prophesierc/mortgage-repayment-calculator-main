@@ -459,8 +459,8 @@ hr {
     }
 }
 
-/* desktop 1600*/
-@media (min-width: 1600px) {
+/* desktop 1440px*/
+@media (min-width: 1440px) {
     body {
         display: flex;
         justify-content: center;
@@ -487,15 +487,15 @@ hr {
     }
 
     #currency{
-        left: 12%;
+        left: 8%;
     }
 
     #years {
-        left: 26.6%;
+        left: 24%;
     }
     
     #percent {
-        left: 45.5%;
+        left: 45%;
     }
 
     .footer-container {
